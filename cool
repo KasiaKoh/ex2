@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Homepage Template</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+
+    .papyrus-paper {
+
+      background-color: beige;
+
+      padding: 20px;
+
+      border: 1px solid lightgray;
+
+      margin-top: 20px;
+
+      font-family: 'Segoe Script', serif;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container mt-5">
+
+    <h1>Homepage Template</h1>
+
+    <div class="form-group">
+
+      <label for="words">Enter three words:</label>
+
+      <input type="text" class="form-control" id="words">
+
+    </div>
+
+    <button class="btn btn-primary" id="generateBtn">Go</button>
+
+    <div id="sermonContainer"></div>
+
+    <button class="btn btn-primary mt-3" id="playBtn">Play Sermon</button>
+
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/responsivevoice/1.5.0/responsivevoice.min.js"></script>
+
+  <script>
+
+    $(document).ready(function() {
+
+      $('#generateBtn').click(function() {
+
+        var words = $('#words').val().split(' ');
+
+        var sermon = createSermon(words);
+
+        $('#sermonContainer').html('<div class="papyrus-paper">' + sermon + '</div>');
+
+      });
+
+
+
+      $('#playBtn').click(function() {
+
+        var sermon = $('#sermonContainer').text();
+
+        responsiveVoice.speak(sermon, 'UK English Female');
+
+      });
+
+
+
+      function createSermon(words) {
+
+        // Generate the sermon using the provided words
+
+        // Replace this with your own sermon generation logic
+
+        var sermon = 'Today, we gather here to reflect on the power of ' + words[0] + ', the beauty of ' + words[1] + ', and the importance of ' + words[2] + '. Let us open our hearts and minds to receive the divine wisdom that awaits us.';
+
+
+
+        return sermon;
+
+      }
+
+    });
+
+  </script>
+
+</body>
+
+</html>
